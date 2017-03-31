@@ -13,8 +13,8 @@ public class Salary implements Comparator<Person> {
     @Override
     public int compare(Person o1, Person o2) {
         if(o1 instanceof Employee && o2 instanceof Employee){
-            return ((Employee) o1).salary - ((Employee) o2).salary;
+            return ((Employee) o2).salary - ((Employee) o1).salary;
         }
-        else return 0;
+        return 0;
     }
 }
