@@ -20,18 +20,20 @@ public class Main {
         System.out.println("Enter number. 1 or 2 or 3 or 4.");
         int numberId = scanner.nextInt();
         ArrayList<Person> arrayList = new ArrayList<>();
+        ArrayList<Person> arrayList1 = new ArrayList<>();
         boolean answer = true;
+        arrayList.add(new Employee("Anna", "Galstyan", 36, 200000));
+        arrayList.add(new Employee("Lilit", "Grigoryan", 56, 120000));
+        arrayList.add(new Employee("Nina", "Mkrtchyan", 29, 100000));
+        arrayList.add(new Person("Mnacakan", "Abajyan", 20));
+        arrayList.add(new Person("Hakob", "Minoyan", 5));
+        arrayList.add(new Employee("Gvenik", "Petrosyan", 55, 250000));
+        arrayList.add(new Employee("Narine", "Poxosyan", 25, 80000));
+
         arrayList.add(new Person("Tigran", "Gevorgyan", 22));
         arrayList.add(new Person("Aurgen", "Sargsyan", 61));
         arrayList.add(new Person("Toros", "Rosilis", 16));
-        arrayList.add(new Person("Mnacakan", "Abajyan", 20));
-        arrayList.add(new Person("Hakob", "Minoyan", 5));
-        arrayList.add(new Employee("Anna", "Galstyan", 36, 200000));
-        arrayList.add(new Employee("Anna", "Galstyan", 36, 200100));
-        arrayList.add(new Employee("Lilit", "Grigoryan", 56, 120000));
-        arrayList.add(new Employee("Narine", "Poxosyan", 25, 80000));
-        arrayList.add(new Employee("Gvenik", "Petrosyan", 55, 250000));
-        arrayList.add(new Employee("Nina", "Mkrtchyan", 29, 100000));
+
 
         switch (numberId){
             case 1:
@@ -48,7 +50,16 @@ public class Main {
                 break;
             case 4:
                 System.out.println("Sorting by salaries.");
+                for (int i = 0;i < arrayList.size();i++){
+                    if(!(arrayList.get(i) instanceof Employee)) {
+//                        System.out.println("et element@: " + arrayList.get(i));
+                        arrayList1.add(arrayList.get(i));
+                        arrayList.remove(arrayList.get(i));
+                        i = 0;
+                    }
+                }
                 Collections.sort(arrayList,new Salary());
+                Collections.sort(arrayList1,new FirstName());
                 break;
             default:
                 answer = false;
@@ -57,7 +68,13 @@ public class Main {
         if(answer) {
             for (Person p : arrayList)
                 System.out.println(p);
+            if(arrayList1 != null)
+            {
+                for (Person p : arrayList1)
+                    System.out.println(p);
+            }
         }
+
 
     }
 }
